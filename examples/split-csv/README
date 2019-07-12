@@ -1,0 +1,9 @@
+# Reading and Writing CSV file in spark-dotnet
+
+To run this:
+
+dotnet build
+cd bin/debug/netcoreapp2.1 (or whatever your output directory is)
+spark-submit --class org.apache.spark.deploy.DotnetRunner  --master local ./microsoft-spark-2.4.x-0.3.0.jar dotnet split-csv.dll
+
+This will read in the source.csv file - partition it by city and write out a number of csv files (at least one per city!)
