@@ -1,0 +1,19 @@
+# Using UDF's to create new columns and to filter datasets
+
+Because UDFs can't run inside the JVM like the other functions, the JVM shells out to a separate program Microsoft.Spark.Worker.exe and that loads this program (loopy loopy).
+
+The easiest way to set this up is to download the worker from github for example:
+
+https://github.com/dotnet/spark/releases/tag/v0.3.0
+
+Then extract the workser somewhere and set this environment variable:
+
+DotnetWorkerPath=C:\spark\worker\0.3.0
+
+The folder is the place you extracted the worker. Then you need to be in the same directory as udf.dll so make sure do:
+
+dotnet build
+cd bin/debug/netcoreapp2.1 (or whatever your output directory is)
+spark-submit --class org.apache.spark.deploy.DotnetRunner  --master local ./microsoft-spark-2.4.x-0.3.0.jar dotnet udf.dll
+
+This will read in the source.csv file - partition it by city and write out a number of csv files (at least one per city!)

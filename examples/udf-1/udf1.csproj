@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>udf_1</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="microsoft.spark" Version="0.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="source.csv" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
